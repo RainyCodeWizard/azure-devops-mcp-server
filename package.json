@@ -15,7 +15,7 @@
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
     "prepare": "npm run build",
     "watch": "tsc --watch",
-    "inspector": "npx @modelcontextprotocol/inspector build/index.js"
+    "inspector": "npx env-cmd npx @modelcontextprotocol/inspector build/index.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "0.6.0",
@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
+    "env-cmd": "^10.1.0",
     "typescript": "^5.3.3"
   }
 }
