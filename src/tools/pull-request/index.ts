@@ -21,9 +21,10 @@ const definitions = [
         },
         repositoryId: {
           type: 'string',
-          description: 'Filter by repository ID (optional)',
+          description: 'Filter by repository ID',
         },
       },
+      required: ['repositoryId'],
     },
   },
   {

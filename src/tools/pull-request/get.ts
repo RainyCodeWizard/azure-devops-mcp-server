@@ -6,7 +6,7 @@ import { PullRequestStatus } from 'azure-devops-node-api/interfaces/GitInterface
 interface GetPullRequestsArgs {
   status?: 'active' | 'completed' | 'abandoned';
   creatorId?: string;
-  repositoryId?: string;
+  repositoryId: string;
 }
 
 export async function getPullRequests(args: GetPullRequestsArgs, config: AzureDevOpsConfig) {
@@ -37,7 +37,7 @@ export async function getPullRequests(args: GetPullRequestsArgs, config: AzureDe
     };
 
     const pullRequests = await gitApi.getPullRequests(
-      args.repositoryId || config.project,
+      args.repositoryId,
       searchCriteria
     );
 
