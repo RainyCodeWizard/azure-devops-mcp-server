@@ -17,6 +17,7 @@ import { wikiTools } from './tools/wiki/index.js';
 import { projectTools } from './tools/project/index.js';
 import { pipelineTools } from './tools/pipeline/index.js';
 import { pullRequestTools } from './tools/pull-request/index.js';
+import { gitTools } from './tools/git/index.js';
 import { AzureDevOpsConfig, createConfig } from './config/environment.js';
 
 import { ListToolsResult } from '@modelcontextprotocol/sdk/types.js';
@@ -77,6 +78,7 @@ class AzureDevOpsServer {
       project: projectTools.initialize(this.config),
       pipeline: pipelineTools.initialize(this.config),
       pullRequest: pullRequestTools.initialize(this.config),
+      git: gitTools.initialize(this.config),
     };
 
     // Combine all tool definitions
@@ -87,6 +89,7 @@ class AzureDevOpsServer {
       ...toolInstances.project.definitions,
       ...toolInstances.pipeline.definitions,
       ...toolInstances.pullRequest.definitions,
+      ...toolInstances.git.definitions,
     ];
 
     this.server = new Server(
@@ -163,6 +166,19 @@ class AzureDevOpsServer {
           case 'trigger_pipeline':
             result = await tools.pipeline.triggerPipeline(
               validateArgs(request.params.arguments, 'Pipeline trigger arguments required')
+            );
+            break;
+
+          // Git Tools
+          case 'list_repositories':
+            result = await tools.git.listRepositories(request.params.arguments);
+            break;
+          case 'get_file':
+            result = await tools.git.getFile(request.params.arguments);
+            break;
+          case 'compare_branches':
+            result = await tools.git.compareBranches(
+              validateArgs(request.params.arguments, 'Branch comparison arguments required')
             );
             break;
 

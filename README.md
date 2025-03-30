@@ -1,4 +1,5 @@
 # Azure DevOps MCP Server for Cline
+
 [![smithery badge](https://smithery.ai/badge/@stefanskiasan/azure-devops-mcp-server)](https://smithery.ai/server/@stefanskiasan/azure-devops-mcp-server)
 
 This Model Context Protocol (MCP) server provides integration with Azure DevOps, allowing Cline to interact with Azure DevOps services.
@@ -21,18 +22,22 @@ npx -y @smithery/cli install @stefanskiasan/azure-devops-mcp-server --client cla
 ```
 
 ### Manual Installation
+
 1. Clone this repository:
+
 ```bash
 git clone https://github.com/stefanskiasan/azure-devops-mcp-server.git
 cd azure-devops-mcp-server
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Build the server:
+
 ```bash
 npm run build
 ```
@@ -83,6 +88,7 @@ Add the following configuration to the `mcpServers` object:
 ```
 
 Replace the following values:
+
 - `/absolute/path/to/azure-devops-server`: The absolute path to where you cloned this repository
 - `your-organization`: Your Azure DevOps organization name
 - `your-project-name`: Your Azure DevOps project name
@@ -91,31 +97,73 @@ Replace the following values:
 ## Available Tools
 
 ### Work Items
+
 - `get_work_item`: Get a work item by ID
 - `list_work_items`: Query work items using WIQL
 - `create_work_item`: Create a new work item (Bug, Task, User Story)
 - `update_work_item`: Update an existing work item
 
 ### Boards
+
 - `get_boards`: Get available boards in the project
 
+### Git
+
+- `list_repositories`: List all Git repositories in the project
+  - Returns: List of repositories with ID, name, default branch, size, and URLs
+- `get_file`: Get the content of a specific file from the repository
+  - Parameters:
+    - `repositoryId`: ID of the repository
+    - `path`: Path to the file in the repository (e.g., "src/index.ts")
+    - `branch`: Branch name to get the file from (optional, defaults to main)
+    - `version`: Specific version (commit ID) to get the file from (optional)
+  - Returns: File content with metadata including:
+    - File path
+    - File size
+    - File content
+    - Last commit ID
+    - Last modified date
+- `compare_branches`: Compare two branches and get commit history between them
+  - Parameters:
+    - `repositoryId`: ID of the repository to compare branches in
+    - `sourceBranch`: Source branch name (e.g., "develop")
+    - `targetBranch`: Target branch name (e.g., "main")
+    - `maxCommits`: Maximum number of commits to return (optional, defaults to 100)
+    - `historyMode`: Git history mode to use (optional, defaults to "simplified")
+      - `simplified`: Standard git log behavior (default)
+      - `first-parent`: Only show first parent of merge commits
+      - `full`: Show all commits including merge commits
+      - `full-simplify-merges`: Show all commits but simplify merge history
+    - `includeDetails`: Include detailed commit information (optional, defaults to false)
+      - When true, includes:
+        - Full commit message
+        - List of changed files with:
+          - File path
+          - Change type (add, edit, delete)
+          - Number of lines added/deleted
+  - Returns: List of commits with commit ID, author, date, and message
+
 ### Pipelines
+
 - `list_pipelines`: List all pipelines in the project
 - `trigger_pipeline`: Execute a pipeline
 
 ### Pull Requests
+
 - `list_pull_requests`: List pull requests
 - `create_pull_request`: Create a new pull request
 - `update_pull_request`: Update a pull request
 - `get_pull_request`: Get pull request details
 
 ### Wiki
+
 - `get_wikis`: List all wikis in the project
 - `get_wiki_page`: Get a wiki page
 - `create_wiki`: Create a new wiki
 - `update_wiki_page`: Create or update a wiki page
 
 ### Projects
+
 - `list_projects`: List all projects in the Azure DevOps organization
 
 ## Verification
@@ -123,6 +171,7 @@ Replace the following values:
 1. Restart Cline (or VSCode) after adding the configuration
 2. The Azure DevOps MCP server should now be listed in Cline's capabilities
 3. You can verify the installation using the MCP Inspector:
+
 ```bash
 npm run inspector
 ```
