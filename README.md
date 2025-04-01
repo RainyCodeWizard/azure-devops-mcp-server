@@ -1,6 +1,6 @@
 # Azure DevOps MCP Server for Cline
 
-[![smithery badge](https://smithery.ai/badge/@stefanskiasan/azure-devops-mcp-server)](https://smithery.ai/server/@stefanskiasan/azure-devops-mcp-server)
+[![smithery badge](https://smithery.ai/badge/@RainyCodeWizard/azure-devops-mcp-server)](https://smithery.ai/server/@RainyCodeWizard/azure-devops-mcp-server)
 
 This Model Context Protocol (MCP) server provides integration with Azure DevOps, allowing Cline to interact with Azure DevOps services.
 
@@ -15,10 +15,10 @@ This Model Context Protocol (MCP) server provides integration with Azure DevOps,
 
 ### Installing via Smithery
 
-To install Azure DevOps Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@stefanskiasan/azure-devops-mcp-server):
+To install Azure DevOps Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@RainyCodeWizard/azure-devops-mcp-server):
 
 ```bash
-npx -y @smithery/cli install @stefanskiasan/azure-devops-mcp-server --client claude
+npx -y @smithery/cli install @RainyCodeWizard/azure-devops-mcp-server --client claude
 ```
 
 ### Manual Installation
@@ -26,7 +26,7 @@ npx -y @smithery/cli install @stefanskiasan/azure-devops-mcp-server --client cla
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/stefanskiasan/azure-devops-mcp-server.git
+git clone https://github.com/RainyCodeWizard/azure-devops-mcp-server.git
 cd azure-devops-mcp-server
 ```
 
