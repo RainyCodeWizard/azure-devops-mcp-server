@@ -1,4 +1,5 @@
 import { getPullRequests } from './get.js';
+import { getPullRequest } from './getById.js';
 import { createPullRequest } from './create.js';
 import { updatePullRequest } from './update.js';
 import { AzureDevOpsConfig } from '../../config/environment.js';
@@ -25,6 +26,20 @@ const definitions = [
         },
       },
       required: ['repositoryId'],
+    },
+  },
+  {
+    name: 'get_pull_request',
+    description: 'Get a specific pull request by ID',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        pullRequestId: {
+          type: 'number',
+          description: 'Pull Request ID to retrieve',
+        },
+      },
+      required: ['pullRequestId'],
     },
   },
   {
@@ -101,6 +116,7 @@ const definitions = [
 export const pullRequestTools = {
   initialize: (config: AzureDevOpsConfig) => ({
     getPullRequests: (args: any) => getPullRequests(args, config),
+    getPullRequest: (args: any) => getPullRequest(args, config),
     createPullRequest: (args: any) => createPullRequest(args, config),
     updatePullRequest: (args: any) => updatePullRequest(args, config),
     definitions,
