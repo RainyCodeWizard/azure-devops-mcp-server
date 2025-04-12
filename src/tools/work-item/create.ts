@@ -15,7 +15,7 @@ export async function createWorkItem(args: { type: string; document: JsonPatchOp
   const workItem = await workItemTrackingApi.createWorkItem(
     undefined,
     args.document,
-    config.project,
+    config.projectId,
     args.type
   );
 

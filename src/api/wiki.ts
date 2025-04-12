@@ -36,7 +36,7 @@ export class WikiApi {
   constructor(connection: WebApi, config: AzureDevOpsConfig) {
     this.connection = connection;
     this.config = config;
-    this.baseUrl = `${config.orgUrl}/${config.project}/_apis/wiki`;
+    this.baseUrl = `${config.orgUrl}/${config.projectId}/_apis/wiki`;
   }
 
   private async getAuthHeader(): Promise<string> {
@@ -54,7 +54,7 @@ export class WikiApi {
       },
       body: JSON.stringify({
         name,
-        projectId: projectId || this.config.project,
+        projectId: projectId || this.config.projectId,
         type: 'projectWiki',
         mappedPath: mappedPath || '/',
       }),

@@ -17,7 +17,7 @@ export async function updateWorkItem(args: { id: number; document: JsonPatchOper
     undefined,
     args.document,
     args.id,
-    config.project
+    config.projectId
   );
 
   return {

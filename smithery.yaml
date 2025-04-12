@@ -10,9 +10,9 @@ startCommand:
       org:
         type: string
         description: Azure DevOps Organization name
-      project:
+      projectId:
         type: string
-        description: Azure DevOps Project name
+        description: Azure DevOps Project ID
   commandFunction: |
     function getCommand(config) {
       return {
@@ -21,7 +21,7 @@ startCommand:
         env: {
           AZURE_DEVOPS_PAT: config.pat,
           AZURE_DEVOPS_ORG: config.org,
-          AZURE_DEVOPS_PROJECT: config.project
+          AZURE_DEVOPS_PROJECT_ID: config.projectId
         }
       };
     }

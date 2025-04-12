@@ -14,7 +14,7 @@ export async function getPipelines(args: GetPipelinesArgs, config: AzureDevOpsCo
 
   try {
     const pipelines = await pipelineApi.getDefinitions(
-      config.project,
+      config.projectId,
       args.name,
       args.folder
     );

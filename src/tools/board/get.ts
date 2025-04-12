@@ -11,8 +11,8 @@ export async function getBoards(args: GetBoardsArgs, config: AzureDevOpsConfig) 
   const workApi = await connection.getWorkApi();
   
   const teamContext = {
-    project: config.project,
-    team: args.team || `${config.project} Team`,
+    project: config.projectId,
+    team: args.team || `${config.projectId} Team`,
   };
 
   const boards = await workApi.getBoards(teamContext);

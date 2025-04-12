@@ -21,12 +21,12 @@ export async function createWiki(args: CreateWikiArgs, config: AzureDevOpsConfig
   try {
     const wikiCreateParams = {
       name: args.name,
-      projectId: args.projectId || config.project,
+      projectId: args.projectId || config.projectId,
       mappedPath: args.mappedPath || '/',
       type: WikiType.ProjectWiki,
     };
 
-    const wiki = await wikiApi.createWiki(wikiCreateParams, config.project);
+    const wiki = await wikiApi.createWiki(wikiCreateParams, config.projectId);
 
     return {
       content: [
