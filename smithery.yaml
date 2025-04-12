@@ -1,0 +1,31 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required: [pat, org, project]
+    properties:
+      pat:
+        type: string
+        description: Azure DevOps Personal Access Token
+      org:
+        type: string
+        description: Azure DevOps Organization name
+      project:
+        type: string
+        description: Azure DevOps Project name
+  commandFunction: |
+    function getCommand(config) {
+      return {
+        command: "node",
+        args: ["build/index.js"],
+        env: {
+          AZURE_DEVOPS_PAT: config.pat,
+          AZURE_DEVOPS_ORG: config.org,
+          AZURE_DEVOPS_PROJECT: config.project
+        }
+      };
+    }
+
+build:
+  dockerfile: Dockerfile
+  dockerBuildPath: . 
