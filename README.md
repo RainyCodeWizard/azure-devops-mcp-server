@@ -78,7 +78,7 @@ Add the following configuration to the `mcpServers` object:
       "env": {
         "AZURE_DEVOPS_ORG": "your-organization",
         "AZURE_DEVOPS_PAT": "your-personal-access-token",
-        "AZURE_DEVOPS_PROJECT": "your-project-name"
+        "AZURE_DEVOPS_PROJECT_ID": "your-project-id"
       },
       "disabled": false,
       "autoApprove": []
@@ -91,7 +91,7 @@ Replace the following values:
 
 - `/absolute/path/to/azure-devops-server`: The absolute path to where you cloned this repository
 - `your-organization`: Your Azure DevOps organization name
-- `your-project-name`: Your Azure DevOps project name
+- `your-project-id`: Your Azure DevOps project ID
 - `your-personal-access-token`: The PAT you generated in step 1
 
 ## Available Tools
@@ -186,7 +186,7 @@ npm run inspector
 2. If you get authentication errors:
    - Verify your PAT hasn't expired
    - Ensure the PAT has all necessary scopes
-   - Double-check the organization and project names
+   - Double-check the organization and project ID
 
 3. For other issues:
    - Run the inspector tool to verify the server is working correctly

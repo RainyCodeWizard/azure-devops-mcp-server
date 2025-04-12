@@ -17,7 +17,7 @@ export async function getWorkItem(args: WorkItemBatchGetRequest, config: AzureDe
     args.asOf,
     WorkItemExpand.All,
     args.errorPolicy,
-    config.project
+    config.projectId
   );
 
   return {

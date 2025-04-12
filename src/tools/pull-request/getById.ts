@@ -17,7 +17,7 @@ export async function getPullRequest(args: GetPullRequestArgs, config: AzureDevO
 
   try {
     // Get specific PR by ID
-    const pullRequest = await gitApi.getPullRequestById(args.pullRequestId, config.project);
+    const pullRequest = await gitApi.getPullRequestById(args.pullRequestId, config.projectId);
     
     if (!pullRequest) {
       throw new McpError(

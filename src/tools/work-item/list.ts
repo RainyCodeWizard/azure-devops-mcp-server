@@ -14,7 +14,7 @@ export async function listWorkItems(args: Wiql, config: AzureDevOpsConfig) {
   
   const queryResult = await workItemTrackingApi.queryByWiql(
     args,
-    { project: config.project }
+    { project: config.projectId }
   );
 
   return {

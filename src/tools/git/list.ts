@@ -8,7 +8,7 @@ export async function listRepositories(config: AzureDevOpsConfig) {
   const gitApi = await connection.getGitApi();
 
   try {
-    const repositories = await gitApi.getRepositories(config.project);
+    const repositories = await gitApi.getRepositories(config.projectId);
     
     // Format repository information
     const formattedRepos = repositories.map(repo => ({

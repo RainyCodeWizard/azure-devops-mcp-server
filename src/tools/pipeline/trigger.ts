@@ -20,7 +20,7 @@ export async function triggerPipeline(args: TriggerPipelineArgs, config: AzureDe
   try {
     // Get pipeline definition first
     const definition = await pipelineApi.getDefinition(
-      config.project,
+      config.projectId,
       args.pipelineId
     );
 
@@ -42,7 +42,7 @@ export async function triggerPipeline(args: TriggerPipelineArgs, config: AzureDe
     };
 
     // Queue new build
-    const queuedBuild = await pipelineApi.queueBuild(build, config.project);
+    const queuedBuild = await pipelineApi.queueBuild(build, config.projectId);
 
     return {
       content: [

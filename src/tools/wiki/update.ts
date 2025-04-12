@@ -22,7 +22,7 @@ export async function updateWikiPage(args: UpdateWikiPageArgs, config: AzureDevO
   const wikiApi = await connection.getWikiApi();
 
   try {
-    const wiki = await wikiApi.getWiki(config.project, args.wikiIdentifier);
+    const wiki = await wikiApi.getWiki(config.projectId, args.wikiIdentifier);
     if (!wiki || !wiki.id) {
       throw new McpError(
         ErrorCode.InvalidParams,

@@ -14,7 +14,7 @@ export async function getWikis(args: Record<string, never>, config: AzureDevOpsC
   const connection = AzureDevOpsConnection.getInstance();
   const wikiApi = await connection.getWikiApi();
   
-  const wikis = await wikiApi.getAllWikis(config.project);
+  const wikis = await wikiApi.getAllWikis(config.projectId);
 
   return {
     content: [
@@ -40,7 +40,7 @@ export async function getWikiPage(args: GetWikiPageArgs, config: AzureDevOpsConf
 
   try {
     // Get wiki information
-    const wiki = await wikiApi.getWiki(config.project, args.wikiIdentifier);
+    const wiki = await wikiApi.getWiki(config.projectId, args.wikiIdentifier);
     if (!wiki || !wiki.id) {
       throw new McpError(
         ErrorCode.InvalidParams,

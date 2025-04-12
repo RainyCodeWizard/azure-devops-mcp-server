@@ -26,7 +26,7 @@ export async function updatePullRequest(args: UpdatePullRequestArgs, config: Azu
 
   try {
     // Get current PR
-    const currentPr = await gitApi.getPullRequestById(args.pullRequestId, config.project);
+    const currentPr = await gitApi.getPullRequestById(args.pullRequestId, config.projectId);
     if (!currentPr) {
       throw new McpError(
         ErrorCode.InvalidParams,
@@ -90,7 +90,7 @@ export async function updatePullRequest(args: UpdatePullRequestArgs, config: Azu
       prUpdate,
       currentPr.repository.id,
       args.pullRequestId,
-      config.project
+      config.projectId
     );
 
     return {

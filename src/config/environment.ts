@@ -4,7 +4,7 @@ import { ConfigurationError } from '../errors.js';
 export interface AzureDevOpsConfig {
   pat: string;
   org: string;
-  project: string;
+  projectId: string;
   orgUrl: string;
 }
 
@@ -27,8 +27,8 @@ export function createConfig(options?: Partial<AzureDevOpsConfig>): AzureDevOpsC
     'Organization (org)'
   );
   const PROJECT = validateConfigValue(
-    options?.project ?? env.AZURE_DEVOPS_PROJECT,
-    'Project (project)'
+    options?.projectId ?? env.AZURE_DEVOPS_PROJECT_ID,
+    'Project (projectId)'
   );
 
   if (!ORG.match(/^[a-zA-Z0-9-_]+$/)) {
@@ -40,7 +40,7 @@ export function createConfig(options?: Partial<AzureDevOpsConfig>): AzureDevOpsC
   return {
     pat: PAT,
     org: ORG,
-    project: PROJECT,
+    projectId: PROJECT,
     orgUrl: `https://dev.azure.com/${ORG}`,
   };
 }

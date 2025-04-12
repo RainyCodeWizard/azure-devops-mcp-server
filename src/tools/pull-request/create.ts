@@ -36,7 +36,7 @@ export async function createPullRequest(args: CreatePullRequestArgs, config: Azu
     const createdPr = await gitApi.createPullRequest(
       pullRequestToCreate,
       args.repositoryId,
-      config.project
+      config.projectId
     );
 
     return {
