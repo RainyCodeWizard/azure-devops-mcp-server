@@ -1,14 +1,14 @@
-# Azure DevOps MCP Server for Cline
+# Azure DevOps MCP Server
 
 [![smithery badge](https://smithery.ai/badge/@RainyCodeWizard/azure-devops-mcp-server)](https://smithery.ai/server/@RainyCodeWizard/azure-devops-mcp-server)
 
-This Model Context Protocol (MCP) server provides integration with Azure DevOps, allowing Cline to interact with Azure DevOps services.
+This Model Context Protocol (MCP) server provides integration with Azure DevOps, allowing Claude Desktop/Cline to interact with Azure DevOps services.
 
 ## Prerequisites
 
 - Node.js (v20 LTS or higher)
 - npm (comes with Node.js)
-- A Cline installation
+- An MCP compatible client
 - Azure DevOps account with access tokens
 
 ## Installation
@@ -60,11 +60,11 @@ Note: The build output (`build/` directory) is not included in version control. 
    - `Project and Team (read)` - For Project and Board information
 6. Copy the generated token
 
-### 2. Configure Cline MCP Settings
+### 2. Configure MCP Settings for Client Apps
 
 Add the server configuration to your Cline MCP settings file:
 
-- For VSCode extension: `%APPDATA%/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings/cline_mcp_settings.json`
+- For Cline VSCode extension: `%APPDATA%/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings/cline_mcp_settings.json`
 - For Claude desktop app: `%LOCALAPPDATA%/Claude/claude_desktop_config.json`
 
 Add the following configuration to the `mcpServers` object:
